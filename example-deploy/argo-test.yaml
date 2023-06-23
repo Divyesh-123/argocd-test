@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: argo-test-2
+  name: argo-test-develop
   labels:
     app: argo-test
 spec:
