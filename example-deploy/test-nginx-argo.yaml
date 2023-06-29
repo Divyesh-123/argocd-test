@@ -2,20 +2,36 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-nginx
-  labels:
-    app: nginx-argo
 spec:
-  replicas: 3
+  replicas: 3  # Number of replicas/pods you want
   selector:
     matchLabels:
-      app: nginx
+      app: your-app
   template:
     metadata:
       labels:
-        app: nginx
+        app: your-app
     spec:
       containers:
-      - name: nginx
-        image: nginx:1.14.2
-        ports:
-        - containerPort: 80
+        - name: nginx
+          image: nginx:1.14.2
+          ports:
+            - containerPort: 8080  # Example port, adjust as needed
+          volumeMounts:
+            - name: shared-volume
+              mountPath: /data/dvs  # Mount path in the container
+      volumes:
+        - name: shared-volume
+          persistentVolumeClaim:
+            claimName: your-pvc  # Name of the Persistent Volume Claim
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: your-pvc
+spec:
+  accessModes:
+    - ReadWriteMany  # Allows multiple pods to read and write
+  resources:
+    requests:
+      storage: 1Gi  # Adjust the storage size as needed
