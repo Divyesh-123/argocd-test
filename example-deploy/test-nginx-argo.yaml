@@ -31,7 +31,7 @@ metadata:
   name: your-pvc
 spec:
   accessModes:
-    - ReadWriteMany  # Allows multiple pods to read and write
+    - ReadWriteOnce  # Allows multiple pods to read and write
   resources:
     requests:
       storage: 1Gi  # Adjust the storage size as needed
