@@ -1,5 +1,4 @@
-image: gcr.io/WHITELABEL_GCP_PROJECT_ID/es-image:7.3.2
-
+image: elasticsearch:7.17.9
 name: elasticsearch
 
 tcpPort: 9200
@@ -8,13 +7,13 @@ transportPort: 9300
 
 replicas: 1
 
-clusterName: WHITELABEL_NAME_cluster
+clusterName: argocd_cluster
 
 minHeap: "-Xms512m" 
 
 maxHeap: "-Xmx512m"
 
-password: WHITELABEL_ELASTICSEARCH_PASSWORD
+password: argocdhelm
 
 resources:
   requests:
@@ -28,7 +27,7 @@ persistence:
   size: 20Gi
 
 nodeSelector:
-  enabled: true
+  enabled: false
   key: application
   value: infrastructure
   
