@@ -1,0 +1,35 @@
+image: gcr.io/WHITELABEL_GCP_PROJECT_ID/es-image:7.3.2
+
+name: elasticsearch
+
+tcpPort: 9200
+
+transportPort: 9300
+
+replicas: 1
+
+clusterName: WHITELABEL_NAME_cluster
+
+minHeap: "-Xms512m" 
+
+maxHeap: "-Xmx512m"
+
+password: WHITELABEL_ELASTICSEARCH_PASSWORD
+
+resources:
+  requests:
+    memory: 250Mi
+    cpu: 150m
+  limits:
+    memory: 1Gi
+    cpu: 250m
+
+persistence:
+  size: 20Gi
+
+nodeSelector:
+  enabled: true
+  key: application
+  value: infrastructure
+  
+
