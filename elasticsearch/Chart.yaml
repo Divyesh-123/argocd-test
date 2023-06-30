@@ -1,7 +1,0 @@
-apiVersion: v1
-name: elasticsearch
-version: 1.0.0
-description: HELM for Elasticsearch
-keywords:
-- elasticsearch
-- index
