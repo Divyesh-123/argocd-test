@@ -17,5 +17,5 @@ spec:
     path: /data/common-data/elasticsearch-data/data
     type: ""
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: manual
+  storageClassName: standard
   volumeMode: Filesystem
