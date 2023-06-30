@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  finalizers:
+  - kubernetes.io/pv-protection
+  labels:
+    app: elasticsearch
+    component: elasticsearch
+    release: elasticsearch
+  name: elasticsearch-pv
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: {{ .Values.persistence.size | quote }}
+  hostPath:
+    path: /data/common-data/elasticsearch-data/data
+    type: ""
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: manual
+  volumeMode: Filesystem

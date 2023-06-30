@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: {{ .Values.name }}
+    component: {{ .Values.name }}
+    release: {{ .Values.name }}
+  name: elasticsearch-service-public
+spec:
+  ports:
+  - name: http
+    port: {{ .Values.tcpPort }}
+    protocol: TCP
+    targetPort: {{ .Values.tcpPort }}
+  - name: transport
+    port: {{ .Values.transportPort }}
+    protocol: TCP
+    targetPort: {{ .Values.transportPort }}
+  selector:
+    app: {{ .Values.name }}
+    component: {{ .Values.name }}
+    release: {{ .Values.name }}
+  type: LoadBalancer
+
